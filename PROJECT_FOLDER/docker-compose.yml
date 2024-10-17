@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: rahasia
+      POSTGRES_DB: data_kepegawaian
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  test_backend_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test_backend_app
+    depends_on:
+      - postgres
+    environment:
+      PORT: 8080
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: rahasia
+      DB_NAME: data_kepegawaian
+    ports:
+      - "8080:8080"
+
+volumes:
+  postgres_data:

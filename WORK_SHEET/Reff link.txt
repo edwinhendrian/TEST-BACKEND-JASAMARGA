@@ -1,0 +1,1 @@
+https://stackoverflow.com/questions/50639231/how-to-count-number-of-strings-in-a-string-aggregation-in-postgresql

@@ -1,0 +1,3 @@
+docker compose up
+docker compose exec test_backend_app npx sequelize-cli db:migrate
+docker compose exec test_backend_app npx sequelize-cli db:seed:all
